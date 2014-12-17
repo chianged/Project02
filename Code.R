@@ -1,7 +1,7 @@
 #command that takes a primer or pair of primers and tells you how good they are with respect to the taxon they target
 
 
-data <- scan(file="http://greengenes.lbl.gov/Download/Sequence_Data/Fasta_data_files/current_GREENGENES_gg16S_unaligned.fasta.gz ", what="list",sep=">")     #Import database split into 3's: (1) -nothing-, (2) descriptors/taxa, (3) sequence
+data <- scan(file="sample.database", what="list",sep=">")     #Import database split into 3's: (1) -nothing-, (2) descriptors/taxa, (3) sequence
 #1 + 3x = -nothing-
 #2 + 3x = descriptors/taxa
 #3x = sequence
