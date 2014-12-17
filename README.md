@@ -87,11 +87,11 @@ primer.quality <- function(primer,taxa){     #primer = primer sequence, taxa = t
   
     
 **What's happening in the command?**  
-1. Calculate the complement of the primer sequence
-2. Determine where and how many times the following appear in the database: Primer complement sequence, taxon of interest
-2. Calculate binding to non-target taxa
-3. Subtract non-targeted binding from total primer binding
-4. Calculate the proportion of targeted taxon which is bound by primer
+1. Calculate the complement of the primer sequence  
+2. Determine where and how many times the following appear in the database: Primer complement sequence, taxon of interest  
+3. Calculate binding to non-target taxa  
+4. Subtract non-targeted binding from total primer binding  
+5. Calculate the proportion of targeted taxon which is bound by primer  
 
 <br>
     
