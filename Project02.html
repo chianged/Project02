@@ -60,15 +60,15 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </div>
 
 
-<p><br><br><br></p>
+<p><br></p>
 <div id="primer.quality" class="section level3">
 <h3>primer.quality</h3>
 <p>This command assesses primer quality in regards to how well a 16S rRNA primer/probe matches its target taxon. It specifically uses the Greengenes 16S rRNA database. The database is first imported &amp; split based upon descriptors (such as taxonomy) and 16S rRNA sequence. The primer.quality command receives 2 inputs: primer sequence and taxon of interest. The command searches the database for matches to the two inputs, and calculates primer quality by comparing the number of sequence matches to taxon matches. The outputs are the proportion of targeted taxon matches, and the proportion of non-targeted taxon sequence matches.</p>
-<p><br><br><br></p>
+<p><br></p>
 </div>
 <div id="import-database" class="section level3">
 <h3>Import Database</h3>
-<p>The Greengenes 16S rRNA database can be downloaded at [<a href="http://greengenes.lbl.gov/Download/Sequence_Data/Fasta_data_files/current_GREENGENES_gg16S_unaligned.fasta.gz">http://greengenes.lbl.gov/Download/Sequence_Data/Fasta_data_files/current_GREENGENES_gg16S_unaligned.fasta.gz</a>] (link provided by <a href="http://www.homd.org/index.php?name=Article&amp;file=index&amp;sid=28">Human Oral Microbiome Database</a>). The database was originally to be provided in this repository under the name Greengenes.database.zip, but the file is 5.6 MB too big. Sorry. There’s still the link though! The next step is to organize/split the database:</p>
+<p>The Greengenes 16S rRNA database can be downloaded at [<a href="http://greengenes.lbl.gov/Download/Sequence_Data/Fasta_data_files/current_GREENGENES_gg16S_unaligned.fasta.gz">http://greengenes.lbl.gov/Download/Sequence_Data/Fasta_data_files/current_GREENGENES_gg16S_unaligned.fasta.gz</a>] (link provided by <a href="http://www.homd.org/index.php?name=Article&amp;file=index&amp;sid=28">Human Oral Microbiome Database</a>). The database was originally to be provided in this repository, but the file is 5.6 MB too big. Sad face. Instead, I’m using a subset of the database called sample.database.<br />The next step is to organize/split the database:</p>
 <pre class="r"><code>data &lt;- scan(file=&quot;sample.database&quot;, what=&quot;list&quot;,sep=&quot;&gt;&quot;)     #Import database split into 3's: (1) -nothing, (2) descriptors/taxa, (3) sequence
   #1 + 3x = -nothing-
   #2 + 3x = descriptors/taxa
@@ -97,7 +97,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </tbody>
 </table>
 <p>Each cluster of 3 seats correspond to each other; the descriptors/taxonomy information refers to the sequence, and vice versa.</p>
-<p><br><br><br></p>
+<p><br></p>
 </div>
 <div id="load-command" class="section level3">
 <h3>Load Command</h3>
@@ -160,32 +160,8 @@ Proportion of primer binding that is to non-targeted taxa
 
 
 <p><br></p>
-<strong>What’s happening in the command?</strong><br />
-<ol>
-<li>
-Calculate the complement of the primer sequence
-</li>
-<ul><li>
-Determine where and how many times the following appear in the database:
-<li>
-Primer complement sequence
-</li>
-<li>
-Taxon of interest
-</li>
-</ul></li>
-<li>
-Calculate binding to non-target taxa
-</li>
-<li>
-Subtract non-targeted binding from total primer binding
-</li>
-<li>
-Calculate the proportion of targeted taxon which is bound by primer
-</li>
-</ol>
-
-<p><br><br><br></p>
+<p><strong>What’s happening in the command?</strong><br />1. Calculate the complement of the primer sequence 2. Determine where and how many times the following appear in the database: Primer complement sequence, taxon of interest 2. Calculate binding to non-target taxa 3. Subtract non-targeted binding from total primer binding 4. Calculate the proportion of targeted taxon which is bound by primer</p>
+<p><br></p>
 </div>
 <div id="example" class="section level3">
 <h3>Example</h3>
@@ -193,7 +169,7 @@ Calculate the proportion of targeted taxon which is bound by primer
 <pre class="r"><code>primer.quality(&quot;GCTGCCTCCCGTAGGAGT&quot;,&quot;Bacteria&quot;)</code></pre>
 <pre><code>## [1] 0.6894
 ## [1] 0</code></pre>
-<p><br><br><br></p>
+<p><br></p>
 </div>
 <div id="limitations" class="section level3">
 <h3>Limitations</h3>

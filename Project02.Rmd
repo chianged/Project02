@@ -7,16 +7,16 @@ output:
     keep_md: yes
 ---
   
- <br><br><br>   
+<br>
       
       
 ###primer.quality  
 This command assesses primer quality in regards to how well a 16S rRNA primer/probe matches its target taxon. It specifically uses the Greengenes 16S rRNA database. The database is first imported & split based upon descriptors (such as taxonomy) and 16S rRNA sequence. The primer.quality command receives 2 inputs: primer sequence and taxon of interest. The command searches the database for matches to the two inputs, and calculates primer quality by comparing the number of sequence matches to taxon matches. The outputs are the proportion of targeted taxon matches, and the proportion of non-targeted taxon sequence matches.
   
-  <br><br><br>  
+  <br>
       
 ###Import Database  
-The Greengenes 16S rRNA database can be downloaded at [http://greengenes.lbl.gov/Download/Sequence_Data/Fasta_data_files/current_GREENGENES_gg16S_unaligned.fasta.gz]  (link provided by [Human Oral Microbiome Database](http://www.homd.org/index.php?name=Article&file=index&sid=28)). The database was originally to be provided in this repository under the name Greengenes.database.zip, but the file is 5.6 MB too big. Sorry. There's still the link though!
+The Greengenes 16S rRNA database can be downloaded at [http://greengenes.lbl.gov/Download/Sequence_Data/Fasta_data_files/current_GREENGENES_gg16S_unaligned.fasta.gz]  (link provided by [Human Oral Microbiome Database](http://www.homd.org/index.php?name=Article&file=index&sid=28)). The database was originally to be provided in this repository, but the file is 5.6 MB too big. Sad face. Instead, I'm using a subset of the database called sample.database.  
 The next step is to organize/split the database:
 ```{r, warning=FALSE}
 data <- scan(file="sample.database", what="list",sep=">")     #Import database split into 3's: (1) -nothing, (2) descriptors/taxa, (3) sequence
@@ -34,7 +34,7 @@ Seat (Number) | Content
 
 Each cluster of 3 seats correspond to each other; the descriptors/taxonomy information refers to the sequence, and vice versa.
   
-  <br><br><br>  
+  <br>
       
 ###Load Command  
 Once the database has been prepared, you can load the primer.quality command:  
@@ -92,18 +92,13 @@ primer.quality <- function(primer,taxa){     #primer = primer sequence, taxa = t
   
     
 **What's happening in the command?**  
-<ol>
-<li>Calculate the complement of the primer sequence</li>
-<ul><li>Determine where and how many times the following appear in the database:
-<li>Primer complement sequence</li>
-<li>Taxon of interest</li>
-</ul></li>
-<li>Calculate binding to non-target taxa</li>
-<li>Subtract non-targeted binding from total primer binding</li>
-<li>Calculate the proportion of targeted taxon which is bound by primer</li>
-</ol>
+1. Calculate the complement of the primer sequence
+2. Determine where and how many times the following appear in the database: Primer complement sequence, taxon of interest
+2. Calculate binding to non-target taxa
+3. Subtract non-targeted binding from total primer binding
+4. Calculate the proportion of targeted taxon which is bound by primer
 
-<br><br><br>
+<br>
     
       
 ###Example  
@@ -115,7 +110,7 @@ primer.quality("GCTGCCTCCCGTAGGAGT","Bacteria")
 ```
 
 
- <br><br><br>     
+ <br>  
 
 
 
